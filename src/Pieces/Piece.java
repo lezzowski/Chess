@@ -48,11 +48,6 @@ public class Piece {
 
     @Override
     public String toString() {
-        return "Piece{" +
-                "x=" + x +
-                ", y=" + y +
-                ", white=" + whiteColor +
-                ", icon='" + icon + '\'' +
-                '}';
+        return icon;
     }
 }

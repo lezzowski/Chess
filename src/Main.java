@@ -15,6 +15,10 @@ public class Main {
         Bishop b1 = new Bishop(1,1,false);
         System.out.println(b);
         System.out.println(b1);
+        Rook r = new Rook(1,1,true);
+        Rook r1 = new Rook(1,1,false);
+        System.out.println(r);
+        System.out.println(r1);
         Queen q = new Queen(1,1,true);
         Queen q1 = new Queen(1,1,false);
         System.out.println(q);
