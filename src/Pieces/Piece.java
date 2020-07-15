@@ -45,4 +45,14 @@ public class Piece {
     public void setWhiteColor(boolean whiteColor) {
         this.whiteColor = whiteColor;
     }
+
+    @Override
+    public String toString() {
+        return "Piece{" +
+                "x=" + x +
+                ", y=" + y +
+                ", white=" + whiteColor +
+                ", icon='" + icon + '\'' +
+                '}';
+    }
 }
