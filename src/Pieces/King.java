@@ -2,10 +2,15 @@ package Pieces;
 
 public class King extends Piece {
 
-    public King(boolean whiteColor) {
-        super(whiteColor);
+    public King(int x, int y,boolean whiteColor) {
+        super(x, y,whiteColor);
 
         this.setIcon(whiteColor ? "\u265A" : "\u2654");
+    }
+
+    @Override
+    public void Move() {
+
     }
 
 }

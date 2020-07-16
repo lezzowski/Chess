@@ -1,14 +1,35 @@
 package Pieces;
 
-public class Piece {
+public abstract class Piece {
 
-
-    private boolean whiteColor;  //0-white;1-diff.white
+    private int x;
+    private int y;
+    private boolean whiteColor;
     private String icon;
 
 
-    public Piece(boolean whiteColor){
+    public Piece(int x, int y, boolean whiteColor){
+        this.x = x;
+        this.y = y;
         this.whiteColor = whiteColor;
+    }
+
+    public abstract void  Move();
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     public String getIcon() {

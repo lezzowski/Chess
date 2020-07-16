@@ -2,9 +2,14 @@ package Pieces;
 
 public class Bishop extends Piece{
 
-    public Bishop(boolean whiteColor) {
-        super(whiteColor);
+    public Bishop(int x, int y,boolean whiteColor) {
+        super(x, y,whiteColor);
 
         this.setIcon(whiteColor ? "\u265D" : "\u2657");
+    }
+
+    @Override
+    public void Move() {
+
     }
 }
