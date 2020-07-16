@@ -2,8 +2,8 @@ package Pieces;
 
 public class Queen extends Piece {
 
-    public Queen(int x, int y, boolean whiteColor) {
-        super(x, y, whiteColor);
+    public Queen(boolean whiteColor) {
+        super(whiteColor);
 
         this.setIcon(whiteColor ? "\u265B" : "\u2655");
 
