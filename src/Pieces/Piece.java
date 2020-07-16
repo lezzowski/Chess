@@ -8,9 +8,7 @@ public abstract class Piece {
     private String icon;
 
 
-    public Piece(int x, int y, boolean whiteColor){
-        this.x = x;
-        this.y = y;
+    public Piece(boolean whiteColor){
         this.whiteColor = whiteColor;
     }
 
