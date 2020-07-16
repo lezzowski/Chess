@@ -3,7 +3,7 @@ import Pieces.*;
 public class Main {
     public static void main(String[] args) {
 
-        Pawn p = new Pawn(1,1,true);
+        /*Pawn p = new Pawn(1,1,true);
         Pawn p1 = new Pawn(1,1,false);
         System.out.println(p);
         System.out.println(p1);
@@ -26,6 +26,10 @@ public class Main {
         King king = new King(1,1,true);
         King king1 = new King(1,1,false);
         System.out.println(king);
-        System.out.println(king1);
+        System.out.println(king1);*/
+
+        Board b = new Board();
+        System.out.println(b);
+
     }
 }
