@@ -3,6 +3,7 @@ import Pieces.*;
 
 public class Board {
 
+    //salvataggio board
     Piece[][] pieces = new Piece[8][8];
 
     public Board(){
@@ -54,13 +55,13 @@ public class Board {
             numbers--;
             for (int j= 0; j < 8; j++){
                 if (this.pieces[i][j]==null){
-                    result+="[    ]";
+                    result+="[\t\t]";
                 }else{
-                    result+="[ "+this.pieces[i][j]+" ]";
+                    result+="[\t"+this.pieces[i][j]+"\t]";
                 }
             }
         }
-        result += " " + "\n    A     B     C     D     E     F     G     H";
+        result += " " + "\n \tA\t \tB\t \tC\t \tD\t \tE\t \tF\t \tG\t \tH";
         return result;
     }
 }
