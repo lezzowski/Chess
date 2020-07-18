@@ -12,7 +12,7 @@ public abstract class Piece {
         this.whiteColor = whiteColor;
     }
 
-    public abstract void  Move();
+    public abstract void  Move(int xMove, int yMove);
 
     public int getX() {
         return x;

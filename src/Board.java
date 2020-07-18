@@ -54,13 +54,13 @@ public class Board {
             numbers--;
             for (int j= 0; j < 8; j++){
                 if (this.pieces[i][j]==null){
-                    result+=" ";
+                    result+="[    ]";
                 }else{
-                    result+=this.pieces[i][j];
+                    result+="[ "+this.pieces[i][j]+" ]";
                 }
             }
         }
-        result += " " + "\n A B C D E F G H";
+        result += " " + "\n    A     B     C     D     E     F     G     H";
         return result;
     }
 }
