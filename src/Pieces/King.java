@@ -11,8 +11,9 @@ public class King extends Piece {
     }
 
     @Override
-    public void Move() {
+    public void Move(int xMove, int yMove) {
 
     }
+
 
 }

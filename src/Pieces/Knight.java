@@ -9,7 +9,9 @@ public class Knight extends Piece {
     }
 
     @Override
-    public void Move() {
+    public void Move(int xMove, int yMove) {
 
     }
+
+
 }
