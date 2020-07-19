@@ -5,6 +5,7 @@ public class Main {
 
         Board b = new Board();
         System.out.println(b);
+        System.out.println("Alfio");
 
 
     }
