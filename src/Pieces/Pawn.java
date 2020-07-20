@@ -11,31 +11,21 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public void Move(int xMove, int yMove) {
-        try {
-            if (isWhiteColor()) {
-                if (firstMove) {
-                    if (getX() - 2 != xMove || getX() - 1 != xMove) {
-                        throw new Exception("Mossa non valida");
-                    } else {
-                        if (getX() - 1 != xMove) {
-                            throw new Exception("Mossa non valida");
-                        }
-                    }
-                } else {
-                    if (firstMove) {
-                        if (getX() + 2 != xMove || getX() + 1 != xMove) {
-                            throw new Exception("Mossa non valida");
-                        }
-                    } else {
-                        if (getX() + 1 != xMove) {
-                            throw new Exception("Mossa non valida");
-                        }
-                    }
-                }
+    public boolean Move(int xFromMove, int yFromMove, int xMove, int yMove) throws Exception {
+        if (isWhiteColor()) {
+            if (firstMove) {
+                firstMove=false;
+                return xMove == (xFromMove - 2) || xMove == (xFromMove - 1);
+            } else {
+                return xMove == (xFromMove - 1);
             }
-        } catch(Exception e) {
-            e.printStackTrace();
+        } else {
+            if (firstMove) {
+                firstMove=false;
+                return xMove == (xFromMove + 2) || xMove == (xFromMove + 1);
+            } else {
+                return xMove == (xFromMove + 1);
+            }
         }
     }
 }

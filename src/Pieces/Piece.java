@@ -1,9 +1,7 @@
 package Pieces;
 
-public abstract class Piece {
+public abstract class Piece{
 
-    private int x;
-    private int y;
     private boolean whiteColor;
     private String icon;
 
@@ -12,23 +10,7 @@ public abstract class Piece {
         this.whiteColor = whiteColor;
     }
 
-    public abstract void  Move(int xMove, int yMove);
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
+    public abstract boolean Move(int xfromMove, int yfromMove, int xMove, int yMove) throws Exception;
 
     public String getIcon() {
         return icon;
