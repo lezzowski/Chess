@@ -51,7 +51,7 @@ public class Board {
 
     public void setPiece(int prevx, int prevy, int nextx, int nexty) {
         try {
-            if (pieces[prevx][prevy].Move(prevx,prevy,nextx,nexty)){
+            if (pieces[prevx][prevy].CheckForMove(prevx,prevy,nextx,nexty)){
                 pieces[nextx][nexty] = pieces[prevx][prevy];
                 pieces[prevx][prevy] = null;
             } else {

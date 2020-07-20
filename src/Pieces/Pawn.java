@@ -11,7 +11,7 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public boolean Move(int xFromMove, int yFromMove, int xMove, int yMove) throws Exception {
+    public boolean CheckForMove(int xFromMove, int yFromMove, int xMove, int yMove) throws Exception {
         if (isWhiteColor()) {
             if (firstMove) {
                 firstMove=false;
