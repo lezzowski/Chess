@@ -1,5 +1,3 @@
-import Pieces.*;
-
 import java.util.Scanner;
 
 public class Main {
