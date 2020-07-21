@@ -10,7 +10,7 @@ public abstract class Piece{
         this.whiteColor = whiteColor;
     }
 
-    public abstract boolean CheckForMove(int xfromMove, int yfromMove, int xMove, int yMove) throws Exception;
+    public abstract boolean CheckForMove(int xFromMove, int yFromMove, int xToMove, int yToMove) throws Exception;
 
     public String getIcon() {
         return icon;

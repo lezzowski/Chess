@@ -9,7 +9,7 @@ public class Knight extends Piece {
     }
 
     @Override
-    public boolean CheckForMove(int xfromMove, int yfromMove, int xMove, int yMove) {
+    public boolean CheckForMove(int xFromMove, int yFromMove, int xToMove, int yToMove) {
 
         return false;
     }

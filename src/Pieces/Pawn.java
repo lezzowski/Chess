@@ -11,20 +11,20 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public boolean CheckForMove(int xFromMove, int yFromMove, int xMove, int yMove) throws Exception {
+    public boolean CheckForMove(int xFromMove, int yFromMove, int xToMove, int yToMove) throws Exception {
         if (isWhiteColor()) {
             if (firstMove) {
                 firstMove=false;
-                return xMove == (xFromMove - 2) || xMove == (xFromMove - 1);
+                return xToMove == (xFromMove - 2) || xToMove == (xFromMove - 1);
             } else {
-                return xMove == (xFromMove - 1);
+                return xToMove == (xFromMove - 1);
             }
         } else {
             if (firstMove) {
                 firstMove=false;
-                return xMove == (xFromMove + 2) || xMove == (xFromMove + 1);
+                return xToMove == (xFromMove + 2) || xToMove == (xFromMove + 1);
             } else {
-                return xMove == (xFromMove + 1);
+                return xToMove == (xFromMove + 1);
             }
         }
     }
