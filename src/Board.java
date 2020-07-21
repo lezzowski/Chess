@@ -49,11 +49,11 @@ public class Board {
         return pieces[x][y];
     }
 
-    public void setPiece(int prevx, int prevy, int nextx, int nexty) {
+    public void setPiece(int prevX, int prevY, int nextX, int nextY) {
         try {
-            if (pieces[prevx][prevy].CheckForMove(prevx,prevy,nextx,nexty)){
-                pieces[nextx][nexty] = pieces[prevx][prevy];
-                pieces[prevx][prevy] = null;
+            if (pieces[prevX][prevY].CheckForMove(prevX,prevY,nextX,nextY)){
+                pieces[nextX][nextY] = pieces[prevX][prevY];
+                pieces[prevX][prevY] = null;
             } else {
                 throw new Exception("Mossa non valida");
             }
