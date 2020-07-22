@@ -9,11 +9,11 @@ public class Main {
 
         while(true){
             System.out.println(b);
-            System.out.println("inserisci coordinate di partenza");
+            System.out.println("Inserisci coordinate di partenza");
             int prevLetter=sc.nextInt();
             int prevNumber=sc.nextInt();
 
-            System.out.println("inserisci coordinate di arrivo");
+            System.out.println("Inserisci coordinate di arrivo");
             int nextLetter=sc.nextInt();
             int nextNumber=sc.nextInt();
             b.setPiece(prevLetter,prevNumber,nextLetter,nextNumber);

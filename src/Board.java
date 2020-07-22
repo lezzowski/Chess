@@ -1,12 +1,14 @@
-import Pieces.*;
-
 public class Board {
 
     //salvataggio board
-    private Piece[][] pieces = new Piece[8][8];
+    private static Piece[][] pieces = new Piece[8][8];
 
     public Board(){
         fillBoard();
+    }
+
+    public static Piece getPieces(int currentX,int currentY) {
+        return pieces[currentX][currentY];
     }
 
     private void fillBoard(){
@@ -59,10 +61,10 @@ public class Board {
                     throw new Exception("Mossa non valida");
                 }
             }else {
-                throw new Exception("Mossa non valida");
+                throw new Exception("Mossa non valida, casella occupata da una pedina alleata.");
             }
         } catch (Exception e) {
-            System.out.println("\u001B[31m"+"Mossa non valida"+"\u001B[0m");
+            System.out.println("\u001B[31m"+e+"\u001B[0m");
         }
     }
 

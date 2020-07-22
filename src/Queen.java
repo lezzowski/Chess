@@ -1,5 +1,3 @@
-package Pieces;
-
 public class Queen extends Piece {
 
     public Queen(boolean whiteColor) {
