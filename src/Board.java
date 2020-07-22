@@ -3,13 +3,13 @@ import Pieces.*;
 public class Board {
 
     //salvataggio board
-    Piece[][] pieces = new Piece[8][8];
+    private Piece[][] pieces = new Piece[8][8];
 
     public Board(){
         fillBoard();
     }
 
-    private Piece[][] fillBoard(){
+    private void fillBoard(){
 
         //Kings
         pieces[0][4] = new King(false);
@@ -42,11 +42,6 @@ public class Board {
             pieces[6][i] = new Pawn( true);
         }
 
-        return pieces;
-    }
-
-    public Piece getPiece(int x, int y) {
-        return pieces[x][y];
     }
 
     public void setPiece(int prevX, int prevY, int nextX, int nextY) {
@@ -60,13 +55,7 @@ public class Board {
         } catch (Exception e) {
             System.out.println("\u001B[31m"+"Mossa non valida"+"\u001B[0m");
         }
-
-
     }
-
-    /*public String getIcon(int x, int y){
-        return pieces[x][y].getIcon();
-    }*/
 
     @Override
     public String toString() {
