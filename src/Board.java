@@ -44,12 +44,9 @@ public class Board {
 
     }
 
-    public boolean checkAlly(int prevX, int prevY, int nextX, int nextY) {
+    private boolean checkAlly(int prevX, int prevY, int nextX, int nextY) {
 
-        if (pieces[nextX][nextY] != null && (pieces[prevX][prevY].isWhiteColor() == pieces[nextX][nextY].isWhiteColor())) {
-            return true;
-        }
-        return false;
+        return (pieces[nextX][nextY] != null) && (pieces[prevX][prevY].isWhiteColor() == pieces[nextX][nextY].isWhiteColor());
     }
 
     public void setPiece(int prevX, int prevY, int nextX, int nextY) {

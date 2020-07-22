@@ -2,7 +2,7 @@ package Pieces;
 
 public class Rook extends Piece {
 
-    private boolean firstMove=true;
+    private boolean firstMove;
 
 
     public Rook(boolean whiteColor) {
