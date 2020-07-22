@@ -44,12 +44,24 @@ public class Board {
 
     }
 
+    public boolean checkAlly(int prevX, int prevY, int nextX, int nextY) {
+
+        if (pieces[prevX][prevY].isWhiteColor() == pieces[nextX][nextY].isWhiteColor()) {
+            return true;
+        }
+        return false;
+    }
+
     public void setPiece(int prevX, int prevY, int nextX, int nextY) {
         try {
-            if (pieces[prevX][prevY].CheckForMove(prevX,prevY,nextX,nextY)){
-                pieces[nextX][nextY] = pieces[prevX][prevY];
-                pieces[prevX][prevY] = null;
-            } else {
+            if (!checkAlly(prevX, prevY, nextX, nextY)) {
+                if (pieces[prevX][prevY].CheckForMove(prevX, prevY, nextX, nextY)) {
+                    pieces[nextX][nextY] = pieces[prevX][prevY];
+                    pieces[prevX][prevY] = null;
+                } else {
+                    throw new Exception("Mossa non valida");
+                }
+            }else {
                 throw new Exception("Mossa non valida");
             }
         } catch (Exception e) {
