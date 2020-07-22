@@ -46,7 +46,7 @@ public class Board {
 
     public boolean checkAlly(int prevX, int prevY, int nextX, int nextY) {
 
-        if (pieces[prevX][prevY].isWhiteColor() == pieces[nextX][nextY].isWhiteColor()) {
+        if (pieces[nextX][nextY] != null && (pieces[prevX][prevY].whiteColor == pieces[nextX][nextY].whiteColor)) {
             return true;
         }
         return false;
