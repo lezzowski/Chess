@@ -2,7 +2,7 @@ package Pieces;
 
 public abstract class Piece{
 
-    public boolean whiteColor;
+    private boolean whiteColor;
     private String icon;
 
 
