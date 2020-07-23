@@ -1,5 +1,8 @@
 public class Board {
 
+    private boolean gameStatus;
+    private boolean whiteTurn;
+
     //salvataggio board
     private static Piece[][] pieces = new Piece[8][8];
 

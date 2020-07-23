@@ -11,6 +11,7 @@ public class Rook extends Piece {
 
     @Override
     public boolean CheckForMove(int xFromMove, int yFromMove, int xMove, int yMove) {
+
         if (xMove == xFromMove) {
             firstMove = false;
             return yMove == yFromMove + 1 || yMove == yFromMove + 2 || yMove == yFromMove + 3 ||

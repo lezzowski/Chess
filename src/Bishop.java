@@ -15,9 +15,9 @@ public class Bishop extends Piece {
             if (yMove == yFromMove + 1 || yMove == yFromMove + 2 || yMove == yFromMove + 3 ||
                     yMove == yFromMove + 4 || yMove == yFromMove + 5 || yMove == yFromMove + 6 || yMove == yFromMove + 7) {
                 return true;
-            } else if (yMove == yFromMove - 1 || yMove == yFromMove - 2 || yMove == yFromMove - 3 ||
-                    yMove == yFromMove - 4 || yMove == yFromMove - 5 || yMove == yFromMove - 6 || yMove == yFromMove - 7) {
-                return true;
+            } else{
+                return yMove == yFromMove - 1 || yMove == yFromMove - 2 || yMove == yFromMove - 3 ||
+                        yMove == yFromMove - 4 || yMove == yFromMove - 5 || yMove == yFromMove - 6 || yMove == yFromMove - 7;
             }
         }
         return false;
