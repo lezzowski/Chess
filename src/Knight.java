@@ -7,20 +7,18 @@ public class Knight extends Piece {
     }
 
     @Override
-    public boolean CheckForMove(int xFromMove, int yFromMove, int xToMove, int yToMove) {
+    public boolean checkForMove(int xFromMove, int yFromMove, int xToMove, int yToMove) {
+        return isValidKnightMove(xFromMove, yFromMove, xToMove, yToMove);
+    }
 
-        //Top moves
-        if ((xToMove == xFromMove + 2) && (yToMove == yFromMove + 1) || (xToMove == xFromMove + 2) && (yToMove == yFromMove - 1)
+    private boolean isValidKnightMove(int xFromMove, int yFromMove, int xToMove, int yToMove){
+        return (xToMove == xFromMove + 2) && (yToMove == yFromMove + 1) || (xToMove == xFromMove + 2) && (yToMove == yFromMove - 1)
                 || (xToMove == xFromMove - 2) && (yToMove == yFromMove - 1)
-                || (xToMove == xFromMove - 2) && (yToMove == yFromMove + 1)) {
-            return true;
-        }
-
-        //Bottom moves
-        return (xToMove == xFromMove + 1) && (yToMove == yFromMove + 2) || (xToMove == xFromMove + 1) && (yToMove == yFromMove - 2)
+                || (xToMove == xFromMove - 2) && (yToMove == yFromMove + 1)
+                || (xToMove == xFromMove + 1) && (yToMove == yFromMove + 2)
+                || (xToMove == xFromMove + 1) && (yToMove == yFromMove - 2)
                 || (xToMove == xFromMove - 1) && (yToMove == yFromMove - 2)
                 || (xToMove == xFromMove - 1) && (yToMove == yFromMove + 2);
     }
-
 
 }

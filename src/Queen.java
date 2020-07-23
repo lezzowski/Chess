@@ -8,29 +8,38 @@ public class Queen extends Piece {
     }
 
     @Override
-    public boolean CheckForMove(int xFromMove, int yFromMove, int xToMove, int yToMove) {
-        if ((xToMove == xFromMove - 1 || xToMove == xFromMove - 2 || xToMove == xFromMove - 3 || xToMove == xFromMove - 4
-                || xToMove == xFromMove - 5 || xToMove == xFromMove - 6 || xToMove == xFromMove - 7) || (xToMove == xFromMove + 1 || xToMove == xFromMove + 2 || xToMove == xFromMove + 3
-                || xToMove == xFromMove + 4 || xToMove == xFromMove + 5 || xToMove == xFromMove + 6 || xToMove == xFromMove + 7)) {
-            if (yToMove == yFromMove + 1 || yToMove == yFromMove + 2 || yToMove == yFromMove + 3
-                    || yToMove == yFromMove + 4 || yToMove == yFromMove + 5 || yToMove == yFromMove + 6 || xToMove == xFromMove + 7) {
-                return true;
-            } else if (yToMove == yFromMove - 1 || yToMove == yFromMove - 2 || yToMove == yFromMove - 3
-                    || yToMove == yFromMove - 4 || yToMove == yFromMove - 5 || yToMove == yFromMove - 6 || xToMove == xFromMove - 7) {
+    public boolean checkForMove(int xFromMove, int yFromMove, int xToMove, int yToMove) {
+        if (isVerticalMove(xToMove,xFromMove)) {
+            if (isHorizontalMove(yToMove,yFromMove)) {
                 return true;
             }
         }
-        if (xToMove == xFromMove) {
-            return yToMove == yFromMove + 1 || yToMove == yFromMove + 2 || yToMove == yFromMove + 3
-                    || yToMove == yFromMove + 4 || yToMove == yFromMove + 5 || yToMove == yFromMove + 6 || yToMove == yFromMove + 7 || yToMove == yFromMove - 1 || yToMove == yFromMove - 2 || yToMove == yFromMove - 3
-                    || yToMove == yFromMove - 4 || yToMove == yFromMove - 5 || yToMove == yFromMove - 6 || yToMove == yFromMove - 7;
-        } else if (yToMove == yFromMove) {
-            return xToMove == xFromMove + 1 || xToMove == xFromMove + 2 || xToMove == xFromMove + 3
-                    || xToMove == xFromMove + 4 || xToMove == xFromMove + 5 || xToMove == xFromMove + 6 || xToMove == xFromMove + 7 ||
-                    xToMove == xFromMove - 1 || xToMove == xFromMove - 2 || xToMove == xFromMove - 3
-                    || xToMove == xFromMove - 4 || xToMove == xFromMove - 5 || xToMove == xFromMove - 6 || xToMove == xFromMove - 7;
+        if (isSameX(xToMove,xFromMove)) {
+            return isHorizontalMove(yToMove,yFromMove);
+        } else if (isSameY(yToMove,yFromMove)) {
+            return isVerticalMove(xToMove,xFromMove);
         }
         return false;
+    }
+
+    private boolean isSameX(int xMove, int xFromMove) {
+        return xMove == xFromMove;
+    }
+
+    private boolean isSameY(int yMove, int yFromMove) {
+        return yMove == yFromMove;
+    }
+
+    private boolean isVerticalMove(int xMove, int xFromMove){
+        return (xMove == xFromMove - 1 || xMove == xFromMove - 2 || xMove == xFromMove - 3 || xMove == xFromMove - 4 ||
+                xMove == xFromMove - 5 || xMove == xFromMove - 6 || xMove == xFromMove - 7) || (xMove == xFromMove + 1 || xMove == xFromMove + 2 || xMove == xFromMove + 3 ||
+                xMove == xFromMove + 4 || xMove == xFromMove + 5 || xMove == xFromMove + 6 || xMove == xFromMove + 7);
+    }
+
+    private boolean isHorizontalMove(int yMove, int yFromMove){
+        return (yMove == yFromMove + 1 || yMove == yFromMove + 2 || yMove == yFromMove + 3 ||
+                yMove == yFromMove + 4 || yMove == yFromMove + 5 || yMove == yFromMove + 6 || yMove == yFromMove + 7) || (yMove == yFromMove - 1 || yMove == yFromMove - 2 || yMove == yFromMove - 3 ||
+                yMove == yFromMove - 4 || yMove == yFromMove - 5 || yMove == yFromMove - 6 || yMove == yFromMove - 7);
     }
 
 

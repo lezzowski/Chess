@@ -57,7 +57,7 @@ public class Board {
     public void setPiece(int prevX, int prevY, int nextX, int nextY) {
         try {
             if (!checkAlly(prevX, prevY, nextX, nextY)) {
-                if (pieces[prevX][prevY].CheckForMove(prevX, prevY, nextX, nextY)) {
+                if (pieces[prevX][prevY].checkForMove(prevX, prevY, nextX, nextY)) {
                     pieces[nextX][nextY] = pieces[prevX][prevY];
                     pieces[prevX][prevY] = null;
                 } else {
