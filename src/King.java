@@ -1,6 +1,6 @@
 public class King extends Piece {
 
-    private boolean firstMove = true;
+    private boolean firstMove;
 
     public King(boolean whiteColor) {
         super(whiteColor);
@@ -10,16 +10,16 @@ public class King extends Piece {
 
     @Override
     public boolean CheckForMove(int xFromMove, int yFromMove, int xToMove, int yToMove) {
-        if ((xToMove == xFromMove - 1) || (xToMove == xFromMove + 1)){
-            if ((yToMove == yFromMove -1) || (yToMove == yFromMove + 1)){
+        if ((xToMove == xFromMove - 1) || (xToMove == xFromMove + 1)) {
+            if ((yToMove == yFromMove - 1) || (yToMove == yFromMove + 1)) {
                 firstMove = false;
                 return true;
             }
         }
-        if (xToMove == xFromMove){
+        if (xToMove == xFromMove) {
             firstMove = false;
             return yToMove == yFromMove + 1 || yToMove == yFromMove - 1;
-        }else if (yToMove == yFromMove){
+        } else if (yToMove == yFromMove) {
             firstMove = false;
             return xToMove == xFromMove + 1 || xToMove == xFromMove - 1;
         }

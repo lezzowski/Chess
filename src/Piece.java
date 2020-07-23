@@ -1,10 +1,10 @@
-public abstract class Piece{
+public abstract class Piece {
 
     private boolean whiteColor;
     private String icon;
 
 
-    public Piece(boolean whiteColor){
+    public Piece(boolean whiteColor) {
         this.whiteColor = whiteColor;
     }
 

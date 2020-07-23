@@ -6,15 +6,15 @@ public class Board {
     //salvataggio board
     private static Piece[][] pieces = new Piece[8][8];
 
-    public Board(){
+    public Board() {
         fillBoard();
     }
 
-    public static Piece getPieces(int currentX,int currentY) {
+    public static Piece getPieces(int currentX, int currentY) {
         return pieces[currentX][currentY];
     }
 
-    private void fillBoard(){
+    private void fillBoard() {
 
         //Kings
         pieces[0][4] = new King(false);
@@ -25,7 +25,7 @@ public class Board {
         pieces[7][3] = new Queen(true);
 
         //Rooks
-        for (int i = 0; i <= 7; i +=7){
+        for (int i = 0; i <= 7; i += 7) {
             pieces[0][i] = new Rook(false);
             pieces[7][i] = new Rook(true);
         }
@@ -33,7 +33,7 @@ public class Board {
         //Knights
         for (int i = 1; i <= 6; i += 5) {
             pieces[0][i] = new Knight(false);
-            pieces[7][i] = new Knight( true);
+            pieces[7][i] = new Knight(true);
         }
 
         //Bishops
@@ -43,8 +43,8 @@ public class Board {
         }
 
         for (int i = 0; i < 8; i++) {
-            pieces[1][i] = new Pawn( false);
-            pieces[6][i] = new Pawn( true);
+            pieces[1][i] = new Pawn(false);
+            pieces[6][i] = new Pawn(true);
         }
 
     }
@@ -63,11 +63,11 @@ public class Board {
                 } else {
                     throw new Exception("Mossa non valida");
                 }
-            }else {
+            } else {
                 throw new Exception("Mossa non valida, casella occupata da una pedina alleata.");
             }
         } catch (Exception e) {
-            System.out.println("\u001B[31m"+e+"\u001B[0m");
+            System.out.println("\u001B[31m" + e + "\u001B[0m");
         }
     }
 
@@ -75,14 +75,14 @@ public class Board {
     public String toString() {
         String result = "";
         int numbers = 8;
-        for (int i = 0; i < 8; i++){
-            result+="\n"+ numbers + " ";
+        for (int i = 0; i < 8; i++) {
+            result += "\n" + numbers + " ";
             numbers--;
-            for (int j= 0; j < 8; j++){
-                if (this.pieces[i][j]==null){
-                    result+="[\t\t]";
-                }else{
-                    result+="[\t"+this.pieces[i][j]+"\t]";
+            for (int j = 0; j < 8; j++) {
+                if (this.pieces[i][j] == null) {
+                    result += "[\t\t]";
+                } else {
+                    result += "[\t" + this.pieces[i][j] + "\t]";
                 }
             }
         }
