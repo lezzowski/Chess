@@ -16,10 +16,10 @@ public class King extends Piece {
                 return true;
             }
         }
-        if (isSameX(xToMove,xFromMove)) {
+        if (isSameX(xToMove, xFromMove)) {
             firstMove = false;
             return isHorizontalMove(yToMove, yFromMove);
-        } else if (isSameY(yToMove,yFromMove)) {
+        } else if (isSameY(yToMove, yFromMove)) {
             firstMove = false;
             return isVerticalMove(xToMove, xFromMove);
         }
@@ -35,11 +35,11 @@ public class King extends Piece {
         return yToMove == yFromMove;
     }
 
-    private boolean isHorizontalMove(int yToMove,int yFromMove){
+    private boolean isHorizontalMove(int yToMove, int yFromMove) {
         return yToMove == yFromMove + 1 || yToMove == yFromMove - 1;
     }
 
-    private boolean isVerticalMove(int xToMove, int xFromMove){
+    private boolean isVerticalMove(int xToMove, int xFromMove) {
         return xToMove == xFromMove + 1 || xToMove == xFromMove - 1;
     }
 

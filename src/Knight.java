@@ -11,7 +11,7 @@ public class Knight extends Piece {
         return isValidKnightMove(xFromMove, yFromMove, xToMove, yToMove);
     }
 
-    private boolean isValidKnightMove(int xFromMove, int yFromMove, int xToMove, int yToMove){
+    private boolean isValidKnightMove(int xFromMove, int yFromMove, int xToMove, int yToMove) {
         return (xToMove == xFromMove + 2) && (yToMove == yFromMove + 1) || (xToMove == xFromMove + 2) && (yToMove == yFromMove - 1)
                 || (xToMove == xFromMove - 2) && (yToMove == yFromMove - 1)
                 || (xToMove == xFromMove - 2) && (yToMove == yFromMove + 1)
