@@ -12,20 +12,20 @@ public class Pawn extends Piece {
     public boolean checkForMove(int xFromMove, int yFromMove, int xToMove, int yToMove) throws Exception {
         if (isWhiteColor()) {
             if (firstMove) {
-                if (((xToMove == xFromMove - 2) || (xToMove == xFromMove - 1)) && (Board.getPieces(xToMove, yToMove) != null)) {
+                if (((xToMove == xFromMove - 2) || (xToMove == xFromMove - 1)) && (Board.getPiece(xToMove, yToMove) != null)) {
                     return false;
                 }
                 if (canEat(xFromMove, yFromMove, xToMove, yToMove)) {
-                    return true;
+                    return !((Board.getPiece(xToMove, yToMove)) instanceof King);
                 }
 
                 firstMove = false;
                 return (xToMove == xFromMove - 2) || (xToMove == xFromMove - 1);
             } else {
                 if (canEat(xFromMove, yFromMove, xToMove, yToMove)) {
-                    return true;
+                    return !((Board.getPiece(xToMove, yToMove)) instanceof King);
                 }
-                if ((xToMove == xFromMove - 1) && (Board.getPieces(xToMove, yToMove) != null)) {
+                if ((xToMove == xFromMove - 1) && (Board.getPiece(xToMove, yToMove) != null)) {
                     return false;
                 }
                 return (xToMove == xFromMove - 1);
@@ -34,18 +34,18 @@ public class Pawn extends Piece {
             if (firstMove) {
 
                 if (canEat(xFromMove, yFromMove, xToMove, yToMove)) {
-                    return true;
+                    return !((Board.getPiece(xToMove, yToMove)) instanceof King);
                 }
-                if (((xToMove == xFromMove + 2) || (xToMove == xFromMove + 1)) && (Board.getPieces(xToMove, yToMove) != null)) {
+                if (((xToMove == xFromMove + 2) || (xToMove == xFromMove + 1)) && (Board.getPiece(xToMove, yToMove) != null)) {
                     return false;
                 }
                 firstMove = false;
                 return (xToMove == xFromMove + 2) || (xToMove == xFromMove + 1);
             } else {
                 if (canEat(xFromMove, yFromMove, xToMove, yToMove)) {
-                    return true;
+                    return !((Board.getPiece(xToMove, yToMove)) instanceof King);
                 }
-                if ((xToMove == xFromMove + 1) && (Board.getPieces(xToMove, yToMove) != null)) {
+                if ((xToMove == xFromMove + 1) && (Board.getPiece(xToMove, yToMove) != null)) {
                     return false;
                 }
                 return (xToMove == xFromMove + 1);
@@ -55,15 +55,13 @@ public class Pawn extends Piece {
 
     private boolean canEat(int xFromMove, int yFromMove, int xToMove, int yToMove) {
         if (isWhiteColor()) {
-            return (xToMove == xFromMove - 1) && (yToMove == yFromMove + 1) && (Board.getPieces(xToMove, yToMove) != null)
-                    || ((xToMove == xFromMove - 1) && (yToMove == yFromMove - 1) && (Board.getPieces(xToMove, yToMove) != null));
+            return (xToMove == xFromMove - 1) && (yToMove == yFromMove + 1) && (Board.getPiece(xToMove, yToMove) != null)
+                    || ((xToMove == xFromMove - 1) && (yToMove == yFromMove - 1) && (Board.getPiece(xToMove, yToMove) != null));
 
         } else {
-            return (xToMove == xFromMove + 1) && (yToMove == yFromMove + 1) && (Board.getPieces(xToMove, yToMove) != null)
-                    || ((xToMove == xFromMove + 1) && (yToMove == yFromMove - 1) && (Board.getPieces(xToMove, yToMove) != null));
-
+            return (xToMove == xFromMove + 1) && (yToMove == yFromMove + 1) && (Board.getPiece(xToMove, yToMove) != null)
+                    || ((xToMove == xFromMove + 1) && (yToMove == yFromMove - 1) && (Board.getPiece(xToMove, yToMove) != null));
         }
-
     }
 
 }

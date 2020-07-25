@@ -1,18 +1,16 @@
 public class Board {
 
-    private boolean gameStatus;
-    private boolean whiteTurn;
+    private boolean gameInProgress = true;
+    private boolean whiteTurn = true;
+    private boolean prevTurn = false;
 
     //salvataggio board
-    private static Piece[][] pieces = new Piece[8][8];
+    private static final Piece[][] pieces = new Piece[8][8];
 
     public Board() {
         fillBoard();
     }
 
-    public static Piece getPieces(int currentX, int currentY) {
-        return pieces[currentX][currentY];
-    }
 
     private void fillBoard() {
 
@@ -42,6 +40,7 @@ public class Board {
             pieces[7][i] = new Bishop(true);
         }
 
+        //Pawns
         for (int i = 0; i < 8; i++) {
             pieces[1][i] = new Pawn(false);
             pieces[6][i] = new Pawn(true);
@@ -54,21 +53,38 @@ public class Board {
         return (pieces[nextX][nextY] != null) && (pieces[prevX][prevY].isWhiteColor() == pieces[nextX][nextY].isWhiteColor());
     }
 
+    public static Piece getPiece(int currentX, int currentY) {
+        return pieces[currentX][currentY];
+    }
+
     public void setPiece(int prevX, int prevY, int nextX, int nextY) {
         try {
-            if (!checkAlly(prevX, prevY, nextX, nextY)) {
-                if (pieces[prevX][prevY].checkForMove(prevX, prevY, nextX, nextY)) {
-                    pieces[nextX][nextY] = pieces[prevX][prevY];
-                    pieces[prevX][prevY] = null;
+            if (getPiece(prevX, prevY) != null && getPiece(prevX, prevY).isWhiteColor() != prevTurn) {
+                if (!checkAlly(prevX, prevY, nextX, nextY)) {
+                    if (pieces[prevX][prevY].checkForMove(prevX, prevY, nextX, nextY)) {
+                        pieces[nextX][nextY] = pieces[prevX][prevY];
+                        pieces[prevX][prevY] = null;
+                    } else {
+                        throw new Exception("Mossa non valida");
+                    }
+                    prevTurn = !prevTurn;
                 } else {
-                    throw new Exception("Mossa non valida");
+                    throw new Exception("Mossa non valida, casella occupata da una pedina alleata.");
                 }
             } else {
-                throw new Exception("Mossa non valida, casella occupata da una pedina alleata.");
+                throw new Exception("Non è il tuo turno!");
             }
         } catch (Exception e) {
             System.out.println("\u001B[31m" + e + "\u001B[0m");
         }
+    }
+
+    public boolean isGameInProgress() {
+        return gameInProgress;
+    }
+
+    public void setGameInProgress(boolean gameInProgress) {
+        this.gameInProgress = gameInProgress;
     }
 
     @Override

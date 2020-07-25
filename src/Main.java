@@ -7,7 +7,7 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        while (true) {
+        while (b.isGameInProgress()) {
             System.out.println(b);
             System.out.println("Inserisci coordinate di partenza");
             int prevLetter = sc.nextInt();

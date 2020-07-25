@@ -1,6 +1,6 @@
 public class Rook extends Piece {
 
-    private boolean firstMove;
+    private boolean firstMove = true;
 
 
     public Rook(boolean whiteColor) {
@@ -10,37 +10,40 @@ public class Rook extends Piece {
     }
 
     @Override
-    public boolean checkForMove(int xFromMove, int yFromMove, int xMove, int yMove) {
+    public boolean checkForMove(int xFromMove, int yFromMove, int xToMove, int yToMove) {
 
-        if (isSameX(xMove, xFromMove)) {
+        if (isStraightMove(xFromMove, yFromMove, xToMove, yToMove)
+                && !hasObstacle(xFromMove, yFromMove, xToMove, yToMove)) {
             firstMove = false;
-            return isHorizontalMove(yMove, yFromMove);
-        } else if (isSameY(yMove, yFromMove)) {
-            firstMove = false;
-            return isVerticalMove(xMove, xFromMove);
+            return true;
         }
         return false;
     }
 
-    private boolean isSameX(int xMove, int xFromMove) {
-        return xMove == xFromMove;
+    private boolean isStraightMove(int xFromMove, int yFromMove, int xToMove, int yToMove) {
+        return (xFromMove == xToMove) || (yFromMove == yToMove);
     }
 
-    private boolean isSameY(int yMove, int yFromMove) {
-        return yMove == yFromMove;
-    }
+    private boolean hasObstacle(int xFromMove, int yFromMove, int xToMove, int yToMove) {
+        int tempX = xFromMove - xToMove;
+        int tempY = yFromMove - yToMove;
+        int newX = tempX != 0 ? tempX / Math.abs(tempX) : 0;
+        int newY = tempY != 0 ? tempY / Math.abs(tempY) : 0;
 
-    private boolean isHorizontalMove(int yMove, int yFromMove) {
-        return yMove == yFromMove + 1 || yMove == yFromMove + 2 || yMove == yFromMove + 3 ||
-                yMove == yFromMove + 4 || yMove == yFromMove + 5 || yMove == yFromMove + 6 || yMove == yFromMove + 7 || yMove == yFromMove - 1 || yMove == yFromMove - 2 || yMove == yFromMove - 3 ||
-                yMove == yFromMove - 4 || yMove == yFromMove - 5 || yMove == yFromMove - 6 || yMove == yFromMove - 7;
-
-    }
-
-    private boolean isVerticalMove(int xMove, int xFromMove) {
-        return xMove == xFromMove + 1 || xMove == xFromMove + 2 || xMove == xFromMove + 3 ||
-                xMove == xFromMove + 4 || xMove == xFromMove + 5 || xMove == xFromMove + 6 || xMove == xFromMove + 7 ||
-                xMove == xFromMove - 1 || xMove == xFromMove - 2 || xMove == xFromMove - 3 ||
-                xMove == xFromMove - 4 || xMove == xFromMove - 5 || xMove == xFromMove - 6 || xMove == xFromMove - 7;
+        if (xFromMove == xToMove) {
+            for (int j = yFromMove - newY; j != yToMove; j -= newY) {
+                if (Board.getPiece(xToMove, j) != null) {
+                    return true;
+                }
+            }
+        }
+        if (yFromMove == yToMove) {
+            for (int i = xFromMove - newX; i != xToMove; i -= newX) {
+                if (Board.getPiece(i, yToMove) != null) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

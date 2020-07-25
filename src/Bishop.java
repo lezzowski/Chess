@@ -7,25 +7,22 @@ public class Bishop extends Piece {
     }
 
     @Override
-    public boolean checkForMove(int xFromMove, int yFromMove, int xMove, int yMove) {
+    public boolean checkForMove(int xFromMove, int yFromMove, int xToMove, int yToMove) {
+        return ((Math.abs(xFromMove - xToMove) == Math.abs(yFromMove - yToMove)) && !hasObstacle(xFromMove, yFromMove, xToMove, yToMove));
+    }
 
-        if (isVerticalMove(xFromMove, xMove)) {
-            return isHorizontalMove(yFromMove, yMove);
+    private boolean hasObstacle(int xFromMove, int yFromMove, int xToMove, int yToMove) {
+        int tempX = xFromMove - xToMove;
+        int tempY = yFromMove - yToMove;
+        int newX = tempX / Math.abs(tempX);
+        int newY = tempY / Math.abs(tempY);
+        for (int i = xFromMove - newX, j = yFromMove - newY; i != xToMove; i -= newX, j -= newY) {
+            if (Board.getPiece(i, j) != null) {
+                return true;
+            }
         }
         return false;
     }
 
-
-    private boolean isVerticalMove(int xMove, int xFromMove) {
-        return (xMove == xFromMove - 1 || xMove == xFromMove - 2 || xMove == xFromMove - 3 || xMove == xFromMove - 4 ||
-                xMove == xFromMove - 5 || xMove == xFromMove - 6 || xMove == xFromMove - 7) || (xMove == xFromMove + 1 || xMove == xFromMove + 2 || xMove == xFromMove + 3 ||
-                xMove == xFromMove + 4 || xMove == xFromMove + 5 || xMove == xFromMove + 6 || xMove == xFromMove + 7);
-    }
-
-    private boolean isHorizontalMove(int yMove, int yFromMove) {
-        return (yMove == yFromMove + 1 || yMove == yFromMove + 2 || yMove == yFromMove + 3 ||
-                yMove == yFromMove + 4 || yMove == yFromMove + 5 || yMove == yFromMove + 6 || yMove == yFromMove + 7) || (yMove == yFromMove - 1 || yMove == yFromMove - 2 || yMove == yFromMove - 3 ||
-                yMove == yFromMove - 4 || yMove == yFromMove - 5 || yMove == yFromMove - 6 || yMove == yFromMove - 7);
-    }
 
 }

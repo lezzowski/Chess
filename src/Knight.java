@@ -8,17 +8,7 @@ public class Knight extends Piece {
 
     @Override
     public boolean checkForMove(int xFromMove, int yFromMove, int xToMove, int yToMove) {
-        return isValidKnightMove(xFromMove, yFromMove, xToMove, yToMove);
+        return ((Math.abs(yFromMove - yToMove) == 2 && Math.abs(xFromMove - xToMove) == 1)
+                || (Math.abs(yFromMove - yToMove) == 1 && Math.abs(xFromMove - xToMove) == 2));
     }
-
-    private boolean isValidKnightMove(int xFromMove, int yFromMove, int xToMove, int yToMove) {
-        return (xToMove == xFromMove + 2) && (yToMove == yFromMove + 1) || (xToMove == xFromMove + 2) && (yToMove == yFromMove - 1)
-                || (xToMove == xFromMove - 2) && (yToMove == yFromMove - 1)
-                || (xToMove == xFromMove - 2) && (yToMove == yFromMove + 1)
-                || (xToMove == xFromMove + 1) && (yToMove == yFromMove + 2)
-                || (xToMove == xFromMove + 1) && (yToMove == yFromMove - 2)
-                || (xToMove == xFromMove - 1) && (yToMove == yFromMove - 2)
-                || (xToMove == xFromMove - 1) && (yToMove == yFromMove + 2);
-    }
-
 }
