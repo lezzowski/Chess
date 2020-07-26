@@ -16,7 +16,7 @@ public class Main {
             System.out.println("Inserisci coordinate di arrivo");
             int nextLetter = sc.nextInt();
             int nextNumber = sc.nextInt();
-            b.setPiece(prevLetter, prevNumber, nextLetter, nextNumber);
+            b.play(prevLetter, prevNumber, nextLetter, nextNumber);
 
 
         }

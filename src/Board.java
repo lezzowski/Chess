@@ -1,8 +1,8 @@
 public class Board {
 
     private boolean gameInProgress = true;
-    private boolean whiteTurn = true;
     private boolean prevTurn = false;
+    private boolean whiteColor = true;
 
     //salvataggio board
     private static final Piece[][] pieces = new Piece[8][8];
@@ -48,35 +48,90 @@ public class Board {
 
     }
 
+    private boolean underCheck(boolean whiteColor) throws Exception {
+        boolean tempColor = !whiteColor;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Piece p = getPiece(i, j);
+                if (p != null && p.isWhiteColor() == tempColor) {
+                    if (!(p instanceof King) &&
+                            p.checkForMove(i, j, getKingPositionX(whiteColor), getKingPositionY(whiteColor))) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    private int getKingPositionX(boolean whiteColor) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (getPiece(i, j) instanceof King) {
+                    if (getPiece(i, j).isWhiteColor() == whiteColor) {
+                        return i;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
+    private int getKingPositionY(boolean whiteColor) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (getPiece(i, j) instanceof King) {
+                    if (getPiece(i, j).isWhiteColor() == whiteColor) {
+                        return j;
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+
     private boolean checkAlly(int prevX, int prevY, int nextX, int nextY) {
 
         return (pieces[nextX][nextY] != null) && (pieces[prevX][prevY].isWhiteColor() == pieces[nextX][nextY].isWhiteColor());
     }
 
-    public static Piece getPiece(int currentX, int currentY) {
-        return pieces[currentX][currentY];
-    }
-
-    public void setPiece(int prevX, int prevY, int nextX, int nextY) {
+    public void play(int prevX, int prevY, int nextX, int nextY) {
         try {
             if (getPiece(prevX, prevY) != null && getPiece(prevX, prevY).isWhiteColor() != prevTurn) {
                 if (!checkAlly(prevX, prevY, nextX, nextY)) {
-                    if (pieces[prevX][prevY].checkForMove(prevX, prevY, nextX, nextY)) {
-                        pieces[nextX][nextY] = pieces[prevX][prevY];
-                        pieces[prevX][prevY] = null;
-                    } else {
-                        throw new Exception("Mossa non valida");
-                    }
-                    prevTurn = !prevTurn;
+                    setPiece(prevX, prevY, nextX, nextY);
                 } else {
                     throw new Exception("Mossa non valida, casella occupata da una pedina alleata.");
                 }
             } else {
                 throw new Exception("Non è il tuo turno!");
             }
+
+            whiteColor = !prevTurn;
+            if (underCheck(whiteColor)) {
+                if (whiteColor) {
+                    System.out.println("\u001B[31m" + "Il Re bianco è sotto scacco" + "\u001B[0m");
+                } else {
+                    System.out.println("\u001B[31m" + "Il Re nero è sotto scacco" + "\u001B[0m");
+                }
+            }
         } catch (Exception e) {
             System.out.println("\u001B[31m" + e + "\u001B[0m");
         }
+    }
+
+    private void setPiece(int prevX, int prevY, int nextX, int nextY) throws Exception {
+        if (pieces[prevX][prevY].checkForMove(prevX, prevY, nextX, nextY)) {
+            pieces[nextX][nextY] = pieces[prevX][prevY];
+            pieces[prevX][prevY] = null;
+        } else {
+            throw new Exception("Mossa non valida");
+        }
+        prevTurn = !prevTurn;
+    }
+
+    public static Piece getPiece(int currentX, int currentY) {
+        return pieces[currentX][currentY];
     }
 
     public boolean isGameInProgress() {

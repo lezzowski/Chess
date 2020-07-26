@@ -32,7 +32,6 @@ public class Pawn extends Piece {
             }
         } else {
             if (firstMove) {
-
                 if (canEat(xFromMove, yFromMove, xToMove, yToMove)) {
                     return !((Board.getPiece(xToMove, yToMove)) instanceof King);
                 }

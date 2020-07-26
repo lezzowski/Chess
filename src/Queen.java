@@ -13,6 +13,7 @@ public class Queen extends Piece {
                 && !hasObstacle(xFromMove, yFromMove, xToMove, yToMove);
     }
 
+    //metodo da richiamare da Piece----
     private boolean isValidQueenMove(int xFromMove, int yFromMove, int xToMove, int yToMove) {
         return isDiagonalMove(xFromMove, yFromMove, xToMove, yToMove) || isStraightMove(xFromMove, yFromMove, xToMove, yToMove);
     }
@@ -45,13 +46,14 @@ public class Queen extends Piece {
                 }
             }
         } else {
-            for (int i = xFromMove - newX, j = yFromMove - newY; i != xToMove; i -= newX, j -= newY) {
-                if (Board.getPiece(i, j) != null) {
-                    return true;
+            for (int i = xFromMove - newX; i != xToMove; i -= newX) {
+                for (int j = yFromMove - newY; j != yToMove; j -= newY) {
+                    if (Board.getPiece(i, j) != null) {
+                        return true;
+                    }
                 }
             }
         }
         return false;
     }
-
 }

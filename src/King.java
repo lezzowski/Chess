@@ -17,8 +17,4 @@ public class King extends Piece {
         return false;
     }
 
-    private boolean isChecked(int xFromMove, int yFromMove) {
-
-        return false;
-    }
 }
