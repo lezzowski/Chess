@@ -1,6 +1,6 @@
 public class Pawn extends Piece {
 
-    private boolean firstMove;
+    private boolean firstMove = true;
 
     public Pawn(boolean whiteColor, boolean fMove) {
         super(whiteColor);
@@ -54,12 +54,16 @@ public class Pawn extends Piece {
 
     private boolean canEat(int xFromMove, int yFromMove, int xToMove, int yToMove) {
         if (isWhiteColor()) {
-            return (xToMove == xFromMove - 1) && (yToMove == yFromMove + 1) && (Board.getPiece(xToMove, yToMove) != null)
-                    || ((xToMove == xFromMove - 1) && (yToMove == yFromMove - 1) && (Board.getPiece(xToMove, yToMove) != null));
+            return (xToMove == xFromMove - 1) && (yToMove == yFromMove + 1)
+                    && (Board.getPiece(xToMove, yToMove) != null)
+                    || ((xToMove == xFromMove - 1) && (yToMove == yFromMove - 1)
+                    && (Board.getPiece(xToMove, yToMove) != null));
 
         } else {
-            return (xToMove == xFromMove + 1) && (yToMove == yFromMove + 1) && (Board.getPiece(xToMove, yToMove) != null)
-                    || ((xToMove == xFromMove + 1) && (yToMove == yFromMove - 1) && (Board.getPiece(xToMove, yToMove) != null));
+            return (xToMove == xFromMove + 1) && (yToMove == yFromMove + 1)
+                    && (Board.getPiece(xToMove, yToMove) != null)
+                    || ((xToMove == xFromMove + 1) && (yToMove == yFromMove - 1)
+                    && (Board.getPiece(xToMove, yToMove) != null));
         }
     }
 

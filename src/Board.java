@@ -3,6 +3,7 @@ public class Board {
     private boolean gameInProgress = true;
     private boolean prevTurn = false;
     private boolean whiteColor = true;
+    private boolean kingCheck = false;
     private Piece[][] reverse = new Piece[2][2];
 
     //salvataggio board
@@ -57,11 +58,13 @@ public class Board {
                 if (p != null && p.isWhiteColor() == tempColor) {
                     if (!(p instanceof King) &&
                             p.checkForMove(i, j, getKingPositionX(whiteColor), getKingPositionY(whiteColor))) {
+                        kingCheck = true;
                         return true;
                     }
                 }
             }
         }
+        kingCheck = false;
         return false;
     }
 
@@ -114,13 +117,7 @@ public class Board {
             }
 
             whiteColor = !prevTurn;
-            if (underCheck(whiteColor)) {
-                if (whiteColor) {
-                    System.out.println("\u001B[31m" + "Il Re bianco è sotto scacco" + "\u001B[0m");
-                } else {
-                    System.out.println("\u001B[31m" + "Il Re nero è sotto scacco" + "\u001B[0m");
-                }
-            }
+            underCheck(whiteColor);
         } catch (Exception e) {
             System.out.println("\u001B[31m" + e + "\u001B[0m");
         }
@@ -136,6 +133,14 @@ public class Board {
             throw new Exception("Mossa non valida");
         }
         prevTurn = !prevTurn;
+    }
+
+    public boolean isWhite() {
+        return whiteColor;
+    }
+
+    public boolean isKingCheck() {
+        return kingCheck;
     }
 
     private void reverseMove(int prevX, int prevY, int nextX, int nextY) {
